@@ -34,9 +34,11 @@ samtools quickcheck -v *.bam && echo 'bam files ok' || echo 'above file(s) faile
 # Count reads 
 S=$1 #strandedness, 0
 D=$2 #min fragment length, 35
-
 featureCounts -p --countReadPairs -T 14 -g Parent -s ${S} -d ${D} -a ${ANNOT} -o ${ID}featureCounts_d${D}s${S}.txt \
     -O --fraction -B -C */*Aligned.out.bam 2> ${ID}featureCounts_d${D}s${S}.screenoutput.txt
 
 # Get gene lengths
 bioawk -c fastx '{ print $name, length($seq) }' ${TRANSC}
+
+## Create counts matrix for DESeq2 input
+cut -f 1,7,8,9,10,11,12,13,14,15 ${ID}featureCounts_d${D}s${S}.txt | sed 's,path/to/rnaFiles/,,g' | sed 's/_Aligned.out.bam//g' | sed -n '1!p' > hbak_PRJEB15396.WBPS18_featurecounts.Rmatrix.tsv
