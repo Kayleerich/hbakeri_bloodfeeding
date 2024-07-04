@@ -55,12 +55,12 @@ res <- results(dds, alpha=0.05)
 print(desc)
 summary(res)
 # Day 7 only, condition: Light vs. Dark
-# out of 23631 with nonzero total read count
+# out of 23447 with nonzero total read count
 # adjusted p-value < 0.05
-# LFC > 0 (up)       : 389, 1.6%
-# LFC < 0 (down)     : 162, 0.69%
-# outliers [1]       : 645, 2.7%
-# low counts [2]     : 5495, 23%
+# LFC > 0 (up)       : 3114, 13%
+# LFC < 0 (down)     : 1199, 5.1%
+# outliers [1]       : 8, 0.034%
+# low counts [2]     : 4546, 19%
 # (mean count < 10)
 
 # Days 6 and 7, condition: Light vs. Dark
