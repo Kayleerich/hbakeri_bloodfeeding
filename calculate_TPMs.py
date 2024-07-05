@@ -21,5 +21,5 @@ for col in [col for col in rpk_df.columns if col != "Length"]:
     norm_tm = rpk_df[col].sum()
     tpm_df[col] = rpk_df[col].mul(1000000).div(norm_tm)
 
-print(f'TPM file saved to: {fc_file.stem}_tpms.tsv')
-tpm_df.to_csv(f'{fc_file.stem}_tpms.tsv', sep='\t', header=True, index=True)
+tpm_df.to_csv(f'{fc_file.parent}/{fc_file.stem}_tpms.tsv', sep='\t', header=True, index=True, float_format='%.4f')
+print(f'TPM file saved to: {fc_file.parent}/{fc_file.stem}_tpms.tsv')
